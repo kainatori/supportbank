@@ -1,4 +1,3 @@
-import { SignOutButton } from "@/components/sign-out-button";
 import { supabaseServerClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -14,7 +13,6 @@ export default async function Home() {
 	return (
 		<>
 			<div>Home</div>
-			<SignOutButton />
 		</>
 	);
 }

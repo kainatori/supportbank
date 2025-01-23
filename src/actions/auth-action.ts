@@ -3,7 +3,7 @@
 import { supabaseServerClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
-export async function loginWithGoogle() {
+export async function loginWithGoogle(): Promise<void> {
 	const supabase = await supabaseServerClient();
 
 	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -24,7 +24,7 @@ export async function loginWithGoogle() {
 	}
 }
 
-export async function signOut() {
+export async function signOut(): Promise<void> {
 	const supabase = await supabaseServerClient();
 
 	await supabase.auth.signOut();
