@@ -1,6 +1,5 @@
 import { getProfile } from "@/actions/profiles-action";
 import { getUser } from "@/actions/user-action";
-import { supabaseServerClient } from "@/lib/supabase/server";
 import { PiggyBank } from "lucide-react";
 import Link from "next/link";
 import { NavBarMenu } from "./nav-bar-menu";

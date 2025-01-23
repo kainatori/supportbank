@@ -13,7 +13,7 @@ export async function getProfile(
 		.single();
 
 	if (error) {
-		throw new Error(error.message);
+		return null;
 	}
 
 	return data;
