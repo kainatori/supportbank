@@ -1,6 +1,6 @@
 import type { Tables } from "@/../supabase/types";
 import { getProfile } from "@/actions/profiles-action";
-import { getUser } from "@/actions/user-action";
+import { getCurrentUser } from "@/actions/user-action";
 import { SupportButton } from "@/components/support-button";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import type { Metadata } from "next";
@@ -37,7 +37,7 @@ export default async function UserPage({ params }: ProfileProps) {
 	const userId = (await params).userId;
 
 	const profile = await getProfileOrFail(userId);
-	const user = await getUser();
+	const user = await getCurrentUser();
 
 	const isLoggedIn = !!user;
 
@@ -52,7 +52,7 @@ export default async function UserPage({ params }: ProfileProps) {
 			</div>
 
 			<div className="flex flex-col pt-8 justify-center items-center">
-				<SupportButton isLoggedIn={isLoggedIn} />
+				<SupportButton isLoggedIn={isLoggedIn} recipientId={userId} />
 			</div>
 		</div>
 	);

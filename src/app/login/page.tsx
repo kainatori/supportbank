@@ -1,11 +1,10 @@
-import { getUser } from "@/actions/user-action";
+import { getCurrentUser } from "@/actions/user-action";
 import { LoginForm } from "@/components/login-form";
-import { supabaseServerClient } from "@/lib/supabase/server";
 import { PiggyBank } from "lucide-react";
 import { redirect } from "next/navigation";
 
 export default async function LoginPage() {
-	const user = await getUser();
+	const user = await getCurrentUser();
 
 	if (user) {
 		redirect("/home");

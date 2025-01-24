@@ -52,6 +52,69 @@ export type Database = {
 				};
 				Relationships: [];
 			};
+			supports: {
+				Row: {
+					amount: number;
+					created_at: string;
+					id: string;
+					is_anonymous: boolean;
+					is_message_private: boolean;
+					message: string | null;
+					recipient_id: string;
+					status: Database["public"]["Enums"]["payment_status"];
+					stripe_checkout_session_id: string | null;
+					supporter_id: string;
+					updated_at: string;
+				};
+				Insert: {
+					amount?: number;
+					created_at?: string;
+					id?: string;
+					is_anonymous?: boolean;
+					is_message_private?: boolean;
+					message?: string | null;
+					recipient_id: string;
+					status?: Database["public"]["Enums"]["payment_status"];
+					stripe_checkout_session_id?: string | null;
+					supporter_id: string;
+					updated_at?: string;
+				};
+				Update: {
+					amount?: number;
+					created_at?: string;
+					id?: string;
+					is_anonymous?: boolean;
+					is_message_private?: boolean;
+					message?: string | null;
+					recipient_id?: string;
+					status?: Database["public"]["Enums"]["payment_status"];
+					stripe_checkout_session_id?: string | null;
+					supporter_id?: string;
+					updated_at?: string;
+				};
+				Relationships: [];
+			};
+			user_financials: {
+				Row: {
+					balance: number;
+					id: string;
+					pending_balance: number;
+					stripe_customer_id: string | null;
+				};
+				Insert: {
+					balance?: number;
+					id: string;
+					pending_balance?: number;
+					stripe_customer_id?: string | null;
+				};
+				Update: {
+					balance?: number;
+					id?: string;
+					pending_balance?: number;
+					stripe_customer_id?: string | null;
+				};
+				Relationships: [];
+			};
 		};
 		Views: {
 			[_ in never]: never;
@@ -60,7 +123,7 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Enums: {
-			[_ in never]: never;
+			payment_status: "pending" | "succeeded" | "failed";
 		};
 		CompositeTypes: {
 			[_ in never]: never;

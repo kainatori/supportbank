@@ -1,11 +1,11 @@
 import { getProfile } from "@/actions/profiles-action";
-import { getUser } from "@/actions/user-action";
+import { getCurrentUser } from "@/actions/user-action";
 import { PiggyBank } from "lucide-react";
 import Link from "next/link";
 import { NavBarMenu } from "./nav-bar-menu";
 
 export async function NavBar() {
-	const user = await getUser();
+	const user = await getCurrentUser();
 
 	const profile = user ? await getProfile(user.id) : null;
 

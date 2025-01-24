@@ -43,6 +43,7 @@ export async function updateSession(request: NextRequest) {
 		!user &&
 		!request.nextUrl.pathname.startsWith("/login") &&
 		!request.nextUrl.pathname.startsWith("/api/auth/callback") &&
+		!request.nextUrl.pathname.startsWith("/api/stripe/webhook") &&
 		!request.nextUrl.pathname.startsWith("/u/") &&
 		request.nextUrl.pathname !== "/"
 	) {

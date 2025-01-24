@@ -1,7 +1,7 @@
 import { supabaseServerClient } from "@/lib/supabase/server";
 import type { User } from "@supabase/supabase-js";
 
-export async function getUser(): Promise<User | null> {
+export async function getCurrentUser(): Promise<User | null> {
 	const supabase = await supabaseServerClient();
 
 	const {

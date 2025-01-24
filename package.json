@@ -9,7 +9,9 @@
 		"format": "biome format --write .",
 		"lint": "biome lint --write .",
 		"check": "biome check --write .",
-		"supabase:generate": "supabase gen types typescript --local > supabase/types.ts"
+		"db:reset": "supabase db reset",
+		"supabase:generate": "supabase gen types typescript --local > supabase/types.ts",
+		"stripe:webhook": "stripe listen --forward-to http://localhost:3000/api/stripe/webhook"
 	},
 	"dependencies": {
 		"@radix-ui/react-avatar": "^1.1.2",
@@ -24,8 +26,10 @@
 		"next": "15.1.6",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
+		"stripe": "^17.5.0",
 		"tailwind-merge": "^2.6.0",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"zod": "^3.24.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
