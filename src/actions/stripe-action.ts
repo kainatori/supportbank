@@ -62,7 +62,7 @@ export async function createCheckoutSession({
 
 		const stripeSession = await stripeClient.checkout.sessions.create({
 			customer: stripeCustomerId,
-			success_url: "http://localhost:3000/home",
+			success_url: "http://localhost:3000/thankyou",
 			currency: "jpy",
 			line_items: [
 				{
