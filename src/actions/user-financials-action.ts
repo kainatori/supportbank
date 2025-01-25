@@ -1,6 +1,25 @@
 import { supabaseAdminClient } from "@/lib/supabase/admin";
 import { supabaseServerClient } from "@/lib/supabase/server";
 import type { Tables } from "../../supabase/types";
+import { getCurrentUser } from "./user-action";
+
+export async function getCurrentUserFinancials(): Promise<Tables<"user_financials"> | null> {
+	const supabase = await supabaseAdminClient();
+	const user = await getCurrentUser();
+	if (!user) return null;
+
+	const { data, error } = await supabase
+		.from("user_financials")
+		.select()
+		.eq("id", user.id)
+		.single();
+
+	if (error) {
+		return null;
+	}
+
+	return data;
+}
 
 export async function getUserFinancials(
 	userId: string,
@@ -45,10 +64,10 @@ async function addPendingBalance(
 ): Promise<void> {
 	const supabase = await supabaseAdminClient();
 
-	const { error } = await supabase
-		.from("user_financials")
-		.update({ pending_balance: amount * 0.85 })
-		.eq("id", userId);
+	const { error } = await supabase.rpc("add_pending_balance", {
+		user_id: userId,
+		increment_amount: amount * 0.85,
+	});
 
 	if (error) {
 		console.error("[Pending Balance Update Error]:", error);

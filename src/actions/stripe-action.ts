@@ -7,6 +7,7 @@ import { getProfile } from "./profiles-action";
 import { createSupport } from "./supports-action";
 import { getCurrentUser } from "./user-action";
 import {
+	getCurrentUserFinancials,
 	getUserFinancials,
 	setStripeCustomerId,
 } from "./user-financials-action";
@@ -37,7 +38,7 @@ export async function createCheckoutSession({
 
 		const [recipientProfile, userFinancials] = await Promise.all([
 			getProfile(recipientId),
-			getUserFinancials(user.id),
+			getCurrentUserFinancials(),
 		]);
 
 		if (!recipientProfile) throw new Error("Recipient not found");
