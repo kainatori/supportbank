@@ -3,7 +3,7 @@ create table
     id uuid references auth.users on delete cascade not null primary key,
     stripe_customer_id text unique,
     pending_balance bigint not null default 0,
-    balance bigint not null default 0
+    available_balance bigint not null default 0
   );
 
 alter table user_financials enable row level security;
@@ -14,11 +14,11 @@ select
 
 revoke all on user_financials
 from
-  public;
+  public, authenticated;
 
 grant
 select
-  (id, pending_balance, balance) on user_financials to authenticated;
+  (id, pending_balance, available_balance) on user_financials to authenticated;
 
 create
 or replace function public.handle_new_user () returns trigger

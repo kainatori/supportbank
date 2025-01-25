@@ -1,18 +1,17 @@
 import { supabaseServerClient } from "@/lib/supabase/server";
-import { getCurrentUser } from "./user-action";
 
-export async function getBalances() {
+interface Balances {
+	pending_balance: number;
+	available_balance: number;
+}
+
+export async function getBalances(userId: string): Promise<Balances> {
 	const supabase = await supabaseServerClient();
-	const user = await getCurrentUser();
-
-	if (!user) {
-		throw new Error("User not found");
-	}
 
 	const { data, error } = await supabase
 		.from("user_financials")
-		.select("pending_balance, balance")
-		.eq("id", user.id)
+		.select("pending_balance, available_balance")
+		.eq("id", userId)
 		.single();
 
 	if (error) {

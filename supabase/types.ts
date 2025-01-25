@@ -96,19 +96,19 @@ export type Database = {
 			};
 			user_financials: {
 				Row: {
-					balance: number;
+					available_balance: number;
 					id: string;
 					pending_balance: number;
 					stripe_customer_id: string | null;
 				};
 				Insert: {
-					balance?: number;
+					available_balance?: number;
 					id: string;
 					pending_balance?: number;
 					stripe_customer_id?: string | null;
 				};
 				Update: {
-					balance?: number;
+					available_balance?: number;
 					id?: string;
 					pending_balance?: number;
 					stripe_customer_id?: string | null;
