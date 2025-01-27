@@ -33,7 +33,7 @@ export function LoginWithGoogleButton() {
 							fill="currentColor"
 						/>
 					</svg>
-					Login with Google
+					Googleで続ける
 				</>
 			)}
 		</Button>

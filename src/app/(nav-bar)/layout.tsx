@@ -1,4 +1,5 @@
 import { Announcement } from "@/components/announcement";
+import { Footer } from "@/components/footer";
 import { NavBar } from "@/components/nav-bar";
 
 export default function NavBarLayout({
@@ -11,6 +12,7 @@ export default function NavBarLayout({
 			<NavBar />
 			<Announcement />
 			{children}
+			<Footer />
 		</>
 	);
 }
