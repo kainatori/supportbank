@@ -1,9 +1,19 @@
-env:
-  SUPABASE_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  SUPABASE_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-  PROJECT_ID: hposohuslskxytqivpja
+name: Supabase
 
- steps:
-   - uses: supabase/setup-cli@v1
-   - run: supabase link --project-ref $PROJECT_ID
-   - run: supabase db push
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      PROJECT_ID: <project-id>
+      
+    steps:
+      - uses: supabase/setup-cli@v1
+      - run: supabase link --project-ref $PROJECT_ID
+      - run: supabase db push
