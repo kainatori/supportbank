@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
-import type { ConfettiRef } from "./ui/confetti";
+import { Confetti, type ConfettiRef } from "./ui/confetti";
 
 export function ThankYouContent() {
 	const confettiRef = useRef<ConfettiRef>(null);
