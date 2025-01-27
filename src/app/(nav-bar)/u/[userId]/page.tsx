@@ -28,7 +28,7 @@ export async function generateMetadata({
 	const profile = await getProfileOrFail(userId);
 
 	return {
-		title: profile.name,
+		title: `${profile.name} - SupportBank`,
 		description: `${profile.name}をサポートしよう！`,
 	};
 }

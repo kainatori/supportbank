@@ -1,8 +1,13 @@
 "use client";
 
 import { Confetti, type ConfettiRef } from "@/components/ui/confetti";
+import type { Metadata } from "next";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
+
+export const metadata: Metadata = {
+	title: "Thank you!",
+};
 
 export default function ConfettiDemo() {
 	const confettiRef = useRef<ConfettiRef>(null);

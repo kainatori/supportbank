@@ -3,7 +3,12 @@ import { getCurrentUser } from "@/actions/user-action";
 import { BalanceCard } from "@/components/balance-card";
 import { Button } from "@/components/ui/button";
 import { supabaseServerClient } from "@/lib/supabase/server";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+	title: "ホーム",
+};
 
 export default async function Home() {
 	const supabase = await supabaseServerClient();

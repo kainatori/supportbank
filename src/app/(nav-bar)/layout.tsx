@@ -1,3 +1,4 @@
+import { Announcement } from "@/components/announcement";
 import { NavBar } from "@/components/nav-bar";
 
 export default function NavBarLayout({
@@ -8,6 +9,7 @@ export default function NavBarLayout({
 	return (
 		<>
 			<NavBar />
+			<Announcement />
 			{children}
 		</>
 	);

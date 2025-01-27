@@ -1,7 +1,14 @@
 import { getCurrentUser } from "@/actions/user-action";
 import { LoginForm } from "@/components/login-form";
 import { PiggyBank } from "lucide-react";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+	title: "ログイン",
+	description:
+		"SupportBankに新規登録/ログインして、お気に入りのクリエーターをサポートしよう！",
+};
 
 export default async function LoginPage() {
 	const user = await getCurrentUser();
