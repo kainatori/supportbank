@@ -6,8 +6,9 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-interface ProfileProps {
-	params: { userId: string };
+interface Props {
+	params: Promise<{ userId: string }>;
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 async function getProfileOrFail(userId: string): Promise<Tables<"profiles">> {
@@ -20,9 +21,7 @@ async function getProfileOrFail(userId: string): Promise<Tables<"profiles">> {
 	return profile;
 }
 
-export async function generateMetadata({
-	params,
-}: ProfileProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const userId = (await params).userId;
 
 	const profile = await getProfileOrFail(userId);
@@ -33,7 +32,7 @@ export async function generateMetadata({
 	};
 }
 
-export default async function UserPage({ params }: ProfileProps) {
+export default async function UserPage({ params }: Props) {
 	const userId = (await params).userId;
 
 	const profile = await getProfileOrFail(userId);

@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { Confetti, type ConfettiRef } from "./ui/confetti";
 
